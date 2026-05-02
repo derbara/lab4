@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Просмотр пользователя{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0"><i class="bi bi-person-vcard me-2 text-primary"></i>Данные пользователя</h1>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i>Назад
+    </a>
+</div>
+
+<div class="card shadow-sm" style="max-width: 600px;">
+    <div class="card-body p-0">
+        <table class="table table-bordered mb-0">
+            <tbody>
+                <tr>
+                    <th class="table-light" width="200">Идентификатор</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th class="table-light">Логин</th>
+                    <td>{{ user.login }}</td>
+                </tr>
+                <tr>
+                    <th class="table-light">Фамилия</th>
+                    <td>{{ user.last_name or '—' }}</td>
+                </tr>
+                <tr>
+                    <th class="table-light">Имя</th>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <th class="table-light">Отчество</th>
+                    <td>{{ user.middle_name or '—' }}</td>
+                </tr>
+                <tr>
+                    <th class="table-light">Роль</th>
+                    <td>
+                        {% if user.role_name %}
+                            <span class="badge bg-secondary">{{ user.role_name }}</span>
+                        {% else %}
+                            <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
